@@ -6,10 +6,40 @@
 //  Copyright (c) 2014年 ArielYih. All rights reserved.
 //
 
-#import "FlipsideViewController.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPopoverControllerDelegate>
 
-@property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
+@interface MainViewController : UIViewController
+{
+    IBOutlet UILabel *resultLable;
+    IBOutlet UIButton *return_zeroButton;
+    IBOutlet UIButton *number1Button;
+    IBOutlet UIButton *number2Button;
+    IBOutlet UIButton *number3Button;
+    IBOutlet UIButton *number4Button;
+    IBOutlet UIButton *number5Button;
+    IBOutlet UIButton *number6Button;
+    IBOutlet UIButton *number7Button;
+    IBOutlet UIButton *number8Button;
+    IBOutlet UIButton *number9Button;
+    IBOutlet UIButton *number0Button;
+    IBOutlet UIButton *plusButton;
+    IBOutlet UIButton *minusButton;
+    IBOutlet UIButton *mutiplyButton;
+    IBOutlet UIButton *divideButton;
+    IBOutlet UIButton *equalButton;
+    IBOutlet UIButton *pointButton;
+    
+    NSString *resultString;
+    NSString *resultTest;
+    NSInteger resultofcalculate;
+    NSInteger value;
+    NSInteger result;
+    NSInteger R;
+    NSInteger count;
+}
+
+-(IBAction)tapButton:(id)sender;
+-(IBAction)tapCalculateButton:(id)sender;
+
 
 @end

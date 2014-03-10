@@ -16,13 +16,13 @@
 		BAF4D43518CD8A670056DA65 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAF4D43318CD8A670056DA65 /* Main_iPhone.storyboard */; };
 		BAF4D43818CD8A670056DA65 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAF4D43618CD8A670056DA65 /* Main_iPad.storyboard */; };
 		BAF4D43B18CD8A670056DA65 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF4D43A18CD8A670056DA65 /* MainViewController.m */; };
-		BAF4D43E18CD8A670056DA65 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF4D43D18CD8A670056DA65 /* FlipsideViewController.m */; };
 		BAF4D44018CD8A670056DA65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAF4D43F18CD8A670056DA65 /* Images.xcassets */; };
 		BAF4D44718CD8A670056DA65 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF4D44618CD8A670056DA65 /* XCTest.framework */; };
 		BAF4D44818CD8A670056DA65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF4D42118CD8A670056DA65 /* Foundation.framework */; };
 		BAF4D44918CD8A670056DA65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF4D42518CD8A670056DA65 /* UIKit.framework */; };
 		BAF4D45118CD8A680056DA65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAF4D44F18CD8A680056DA65 /* InfoPlist.strings */; };
 		BAF4D45318CD8A680056DA65 /* CalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF4D45218CD8A680056DA65 /* CalculatorTests.m */; };
+		BAF4D46418CDA5A40056DA65 /* PlusCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF4D46318CDA5A40056DA65 /* PlusCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +50,14 @@
 		BAF4D43718CD8A670056DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		BAF4D43918CD8A670056DA65 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BAF4D43A18CD8A670056DA65 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		BAF4D43C18CD8A670056DA65 /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
-		BAF4D43D18CD8A670056DA65 /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
 		BAF4D43F18CD8A670056DA65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BAF4D44518CD8A670056DA65 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF4D44618CD8A670056DA65 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BAF4D44E18CD8A680056DA65 /* CalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalculatorTests-Info.plist"; sourceTree = "<group>"; };
 		BAF4D45018CD8A680056DA65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BAF4D45218CD8A680056DA65 /* CalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorTests.m; sourceTree = "<group>"; };
+		BAF4D46218CDA5A40056DA65 /* PlusCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlusCalculator.h; sourceTree = "<group>"; };
+		BAF4D46318CDA5A40056DA65 /* PlusCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +123,10 @@
 				BAF4D43618CD8A670056DA65 /* Main_iPad.storyboard */,
 				BAF4D43918CD8A670056DA65 /* MainViewController.h */,
 				BAF4D43A18CD8A670056DA65 /* MainViewController.m */,
-				BAF4D43C18CD8A670056DA65 /* FlipsideViewController.h */,
-				BAF4D43D18CD8A670056DA65 /* FlipsideViewController.m */,
 				BAF4D43F18CD8A670056DA65 /* Images.xcassets */,
 				BAF4D42818CD8A670056DA65 /* Supporting Files */,
+				BAF4D46218CDA5A40056DA65 /* PlusCalculator.h */,
+				BAF4D46318CDA5A40056DA65 /* PlusCalculator.m */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -259,8 +259,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAF4D43218CD8A670056DA65 /* AppDelegate.m in Sources */,
+				BAF4D46418CDA5A40056DA65 /* PlusCalculator.m in Sources */,
 				BAF4D43B18CD8A670056DA65 /* MainViewController.m in Sources */,
-				BAF4D43E18CD8A670056DA65 /* FlipsideViewController.m in Sources */,
 				BAF4D42E18CD8A670056DA65 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
