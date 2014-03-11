@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "PlusCalculator.h"
+
 
 @interface MainViewController ()
 
@@ -39,8 +39,12 @@
     [equalButton setTitle:@"=" forState:UIControlStateNormal];
     [pointButton setTitle:@"." forState:UIControlStateNormal];
     resultString = @"";
-    count = 0;
-    R = 0;
+    theFirstNumber = theSecondNumber = @"";
+    theSecondNumber = @"";
+    theOperand = @"";
+    theTempNumber = @"";
+    theTempOperand = @"";
+    theIntTempNumber = theIntFirstNumber = theIntSecondNumber = 0;
 }
 
 -(IBAction)tapButton:(id)sender
@@ -78,48 +82,154 @@
     else if ( [ sender isEqual:pointButton])
         resultString = [ resultString stringByAppendingString:@"."];
     
-//    else if ( [ sender isEqual:plusButton])
-//    {
-//        PlusCalculator *plus = [[PlusCalculator alloc] init];
-//        [plus PlusWithValue:resultString];
-//    }
     
     resultLable.text = resultString;
 }
 
 -(IBAction)tapCalculateButton:(id)sender
 {
-    NSInteger plus[count];
-    if ( [sender isEqual:plusButton])
+
+    if ([theFirstNumber isEqual:@""] && [theOperand isEqual:@""])
     {
-        plus[count] = [resultString intValue];
-        NSLog(@"%i  %i" ,count, plus[count]);
-        result = plus[count] + R;
-        R = plus[count];
-        count++;
-        resultString = @"";
-        [self tapButton:sender];
+        if ( [sender isEqual:plusButton])
+        {
+            theFirstNumber = resultString;
+            theOperand = @"+";
+            resultString = @"";
+            [self tapButton:sender];
+        }
+        
+        else if ( [sender isEqual:minusButton])
+        {
+            theFirstNumber = resultString;
+            theOperand = @"-";
+            resultString = @"";
+            [self tapButton:sender];
+        }
+        NSLog(@"%@", theFirstNumber);
+        NSLog(@"%@", theOperand);
+    }
+  
+    else if (![theFirstNumber isEqualToString:@""] && ![theOperand isEqualToString:@""] && [theTempOperand isEqualToString:@""])
+    {
+        if ( [sender isEqual:plusButton])
+        {
+            theSecondNumber = resultString;
+            theTempOperand = @"+";
+            resultString = @"";
+            [self tapButton:sender];
+        }
+        
+        else if ( [sender isEqual:minusButton])
+        {
+            theSecondNumber = resultString;
+            theTempOperand = @"-";
+            resultString = @"";
+            [self tapButton:sender];
+        }
+        
+        else if ( [sender isEqual: equalButton])
+        {
+            theSecondNumber = resultString;
+            theIntFirstNumber = [theFirstNumber integerValue];
+            theIntSecondNumber = [theSecondNumber integerValue];
+            if ([theOperand isEqualToString :@"+"])
+            {
+                theIntTempNumber = theIntFirstNumber + theIntSecondNumber;
+                theTempNumber = [NSString stringWithFormat:@"%d", theIntTempNumber];
+                resultLable.text = theTempNumber;
+            }
+            else if ([theOperand isEqualToString:@"-"])
+            {
+                theIntTempNumber = theIntFirstNumber - theIntSecondNumber;
+                theTempNumber = [NSString stringWithFormat:@"%d", theIntTempNumber];
+                resultLable.text = theTempNumber;
+            }
+           resultString = theFirstNumber = theSecondNumber = theOperand = @"";
+        }
     }
     
-    else if ([sender isEqual:return_zeroButton])
-    {
-        resultString = @"";
-        resultLable.text = resultString;
-    }
-    
-    
-    else if ( [sender isEqual:equalButton])
-    {
-        value = [resultString intValue];
-        NSLog(@"%d",value);
-        NSLog(@"%d",result);
-        resultofcalculate = result + value;
-        resultLable.text = [NSString stringWithFormat:@"%i", resultofcalculate];
-        resultString = @"";
-        count = 0;
-    }
-    
-    
+//    else if ( ![theFirstNumber isEqual:@""] && ![theOperand isEqual:@""] && ![theSecondNumber isEqual:@""] && ![theTempOperand isEqual:@""])
+//    {
+//        theIntFirstNumber = [theFirstNumber intValue];
+//        theIntSecondNumber = [theSecondNumber intValue];
+//        
+//        if ([theOperand isEqual:@"+"] && [sender isEqual:plusButton])
+//        {
+//            theIntTempNumber = theIntFirstNumber + theIntSecondNumber;
+//            theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//            theFirstNumber = theTempNumber;
+//            theOperand = theTempOperand;
+//            theSecondNumber = resultString;
+//            theTempOperand = @"+";
+//            resultString = @"";
+//            [self tapButton:sender];
+//        }
+//        
+//        else if ([theOperand isEqual:@"+"] && [sender isEqual:minusButton])
+//        {
+//            theIntTempNumber = theIntFirstNumber + theIntSecondNumber;
+//            theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//            theFirstNumber = theTempNumber;
+//            theOperand = theTempOperand;
+//            theSecondNumber = resultString;
+//            theTempOperand = @"-";
+//            resultString = @"";
+//            [self tapButton:sender];
+//        }
+//        
+//        else if ([theOperand isEqual:@"+"] && [sender isEqual:equalButton])
+//        {
+//            theIntTempNumber = theIntFirstNumber + theIntSecondNumber;
+//            theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//            theFirstNumber = theTempNumber;
+//            theOperand = theTempOperand;
+//            theSecondNumber = resultString;
+//            theTempOperand = @"";
+//            resultString = @"";
+//            if ([theOperand isEqual:@"+"])
+//            {
+//                theIntFirstNumber = [theFirstNumber intValue];
+//                theIntSecondNumber = [theSecondNumber intValue];
+//                theIntTempNumber = theIntFirstNumber + theIntSecondNumber;
+//                theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//                resultLable.text =theTempNumber;
+//            }
+//            
+//            else if ([theOperand isEqual:@"-"])
+//            {
+//                theIntFirstNumber = [theFirstNumber intValue];
+//                theIntSecondNumber = [theSecondNumber intValue];
+//                theIntTempNumber = theIntFirstNumber - theIntSecondNumber;
+//                theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//                resultLable.text =theTempNumber;
+//            }
+//        }
+//        
+//        else if ([theOperand isEqual:@"-"] && [sender isEqual:minusButton])
+//        {
+//            theIntTempNumber = theIntFirstNumber - theIntSecondNumber;
+//            theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//            theFirstNumber = theTempNumber;
+//            theOperand = theTempOperand;
+//            theSecondNumber = resultString;
+//            theTempOperand = @"-";
+//            resultString = @"";
+//            [self tapButton:sender];
+//        }
+//        
+//        else if ([theOperand isEqual:@"-"] && [sender isEqual:plusButton])
+//        {
+//            theIntTempNumber = theIntFirstNumber - theIntSecondNumber;
+//            theTempNumber = [NSString stringWithFormat:@"%d",theIntTempNumber];
+//            theFirstNumber = theTempNumber;
+//            theOperand = theTempOperand;
+//            theSecondNumber = resultString;
+//            theTempOperand = @"+";
+//            resultString = @"";
+//            [self tapButton:sender];
+//        }
+//    }
 }
 
 

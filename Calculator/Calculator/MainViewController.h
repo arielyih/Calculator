@@ -30,12 +30,14 @@
     IBOutlet UIButton *pointButton;
     
     NSString *resultString;
-    NSString *resultTest;
-    NSInteger resultofcalculate;
-    NSInteger value;
-    NSInteger result;
-    NSInteger R;
-    NSInteger count;
+    NSString *theFirstNumber;
+    NSString *theSecondNumber;
+    NSString *theTempNumber;
+    NSString *theOperand;
+    NSString *theTempOperand;
+    NSInteger theIntFirstNumber;
+    NSInteger theIntSecondNumber;
+    NSInteger theIntTempNumber;
 }
 
 -(IBAction)tapButton:(id)sender;
