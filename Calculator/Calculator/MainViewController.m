@@ -81,32 +81,66 @@
 
 -(IBAction)tapCalculateButton:(id)sender
 {
-    if ([theFirstNumber isEqualToString:@""] && [theOperand isEqualToString:@""])
+    if ([sender isEqual:return_zeroButton])
     {
-        theFirstNumber = resultString;
-        theTempNumber = resultString;
-        resultString = @"";
-        if ([sender isEqual:plusButton])
+        resultLable.text = @"";
+        resultString = theFirstNumber = theSecondNumber = theOperand = theTempNumber = @"";
+    }
+    
+    else if ([theFirstNumber isEqualToString:@""] && [theOperand isEqualToString:@""])
+    {
+        if ([theTempNumber isEqualToString:@""])
         {
-            theOperand = @"+";
-            resultLable.text = theTempNumber;
+            theFirstNumber = resultString;
+            theTempNumber = resultString;
+            resultString = @"";
+            if ([sender isEqual:plusButton])
+            {
+                theOperand = @"+";
+                resultLable.text = theTempNumber;
+            }
+            else if ([sender isEqual:minusButton])
+            {
+                theOperand = @"-";
+                resultLable.text = theTempNumber;
+            }
+            else if ([sender isEqual:mutiplyButton])
+            {
+                theOperand = @"x";
+                resultLable.text = theTempNumber;
+            }
+            else if ([sender isEqual:divideButton])
+            {
+                theOperand = @"/";
+                resultLable.text = theTempNumber;
+            }
         }
-        else if ([sender isEqual:minusButton])
+        else if(![theTempNumber isEqualToString:@""])
         {
-            theOperand = @"-";
-            resultLable.text = theTempNumber;
+            theFirstNumber = theTempNumber;
+            resultString = @"";
+            if ([sender isEqual:plusButton])
+            {
+                theOperand = @"+";
+                resultLable.text = theTempNumber;
+            }
+            else if ([sender isEqual:minusButton])
+            {
+                theOperand = @"-";
+                resultLable.text = theTempNumber;
+            }
+            else if ([sender isEqual:mutiplyButton])
+            {
+                theOperand = @"x";
+                resultLable.text = theTempNumber;
+            }
+            else if ([sender isEqual:divideButton])
+            {
+                theOperand = @"/";
+                resultLable.text = theTempNumber;
+            }
         }
-        else if ([sender isEqual:mutiplyButton])
-        {
-            theOperand = @"x";
-            resultLable.text = theTempNumber;
-        }
-        else if ([sender isEqual:divideButton])
-        {
-            theOperand = @"/";
-            resultLable.text = theTempNumber;
-        }
-        [self tapButton:sender];
+        
     }
     
     else if (![theFirstNumber isEqualToString:@""] && ![theOperand isEqualToString:@""])
@@ -118,198 +152,191 @@
         {
             if ([theOperand isEqualToString:@"+"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber + theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber + theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"-"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber - theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber - theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"x"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber * theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber * theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"/"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber / theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber / theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             theSecondNumber = resultString = @"";
             theOperand = @"+";
-            [self tapButton:sender];
+            resultLable.text = theTempNumber;
         }
         else if ([sender isEqual:minusButton])
         {
             if ([theOperand isEqualToString:@"+"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber + theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber + theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"-"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber - theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber - theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"x"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber * theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber * theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"/"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber / theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber / theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             theSecondNumber = resultString = @"";
             theOperand = @"-";
-            [self tapButton:sender];
+            resultLable.text = theTempNumber;
         }
         else if ([sender isEqual:mutiplyButton])
         {
             if ([theOperand isEqualToString:@"+"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber + theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber + theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"-"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber - theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber - theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"x"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber * theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber * theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"/"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber / theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber / theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             theSecondNumber = resultString = @"";
             theOperand = @"x";
-            [self tapButton:sender];
+            resultLable.text = theTempNumber;
         }
         else if ([sender isEqual:divideButton])
         {
             if ([theOperand isEqualToString:@"+"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber + theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber + theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"-"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber - theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber - theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"x"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber * theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber * theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"/"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber / theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber / theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             theSecondNumber = resultString = @"";
             theOperand = @"/";
-            [self tapButton:sender];
+            resultLable.text = theTempNumber;
         }
         else if ([sender isEqual:equalButton])
         {
             if ([theOperand isEqualToString:@"+"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber + theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber + theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"-"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber - theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber - theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"x"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber * theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber * theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
             else if([theOperand isEqualToString:@"/"])
             {
-                NSInteger theIntFirstNumber = [theFirstNumber integerValue];
-                NSInteger theIntSecondNumber = [theSecondNumber integerValue];
-                NSInteger theIntResult = theIntFirstNumber / theIntSecondNumber;
-                theFirstNumber = [NSString stringWithFormat:@"%d", theIntResult];
+                float theIntFirstNumber = [theFirstNumber floatValue];
+                float theIntSecondNumber = [theSecondNumber floatValue];
+                float theIntResult = theIntFirstNumber / theIntSecondNumber;
+                theFirstNumber = [NSString stringWithFormat :@"%.5f", theIntResult];
                 theTempNumber = theFirstNumber;
             }
-            theSecondNumber = resultString = theOperand =  @"";
+            theSecondNumber = resultString = theOperand = theFirstNumber = @"";
             resultLable.text = theTempNumber;
-//            [self tapButton:sender];
         }
-    }
-    else if ([sender isEqual:return_zeroButton])
-    {
-        resultString = theFirstNumber = theSecondNumber = theOperand = theTempNumber = @"";
-        resultLable.text = resultString;
-        [self tapButton:sender];
     }
 }
 

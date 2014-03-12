@@ -34,9 +34,9 @@
     NSString *theSecondNumber;
     NSString *theTempNumber;
     NSString *theOperand;
-    BOOL finishTheFirstNumber;   // 布林值   if (test == YES) 才會進入function
-    BOOL finishTheOperand;
-    BOOL finishTheSecondNumber;
+//    BOOL finishTheFirstNumber;   // 布林值   if (test == YES) 才會進入function
+//    BOOL finishTheOperand;
+//    BOOL finishTheSecondNumber;
 }
 
 -(IBAction)tapButton:(id)sender;
