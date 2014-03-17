@@ -235,18 +235,7 @@
                         <outlet property="equalButton" destination="7ay-y4-Uk1" id="Aek-io-s6j"/>
                         <outlet property="minusButton" destination="G1k-kd-dwY" id="9e8-kF-zjK"/>
                         <outlet property="mutiplyButton" destination="UYQ-f0-dy3" id="dCj-cY-8wd"/>
-                        <outlet property="number0Button" destination="Zmn-Xx-zVY" id="qIL-Mp-Lw8"/>
-                        <outlet property="number1Button" destination="DDR-Pg-vqU" id="t7U-MR-Jf8"/>
-                        <outlet property="number2Button" destination="zcv-rK-4v8" id="2Vb-p0-z1G"/>
-                        <outlet property="number3Button" destination="lz3-Hp-wCk" id="lfk-W3-Obt"/>
-                        <outlet property="number4Button" destination="E5r-KW-4u7" id="wyi-cf-ggh"/>
-                        <outlet property="number5Button" destination="eEp-oZ-6LY" id="qzn-Ds-1bc"/>
-                        <outlet property="number6Button" destination="wcO-Ia-6qR" id="czz-1b-zCC"/>
-                        <outlet property="number7Button" destination="kdJ-JN-mVz" id="gle-hl-nwH"/>
-                        <outlet property="number8Button" destination="iOt-o0-PgA" id="xZp-gu-qft"/>
-                        <outlet property="number9Button" destination="W3z-Rq-vU6" id="xhL-tx-2w3"/>
                         <outlet property="plusButton" destination="NY4-a0-0Qv" id="1bt-7b-N54"/>
-                        <outlet property="pointButton" destination="jCB-od-6SR" id="att-ss-mV3"/>
                         <outlet property="resultLable" destination="gwe-jw-0D2" id="eti-dj-p9o"/>
                         <outlet property="return_zeroButton" destination="dX2-x1-CxY" id="oX2-YM-sco"/>
                     </connections>

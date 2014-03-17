@@ -8,12 +8,6 @@
 
 #import "MainViewController.h"
 
-
-//@interface MainViewController ()
-//
-//
-//@end
-
 @implementation MainViewController
 
 -(void)viewDidLoad
@@ -25,100 +19,39 @@
 
 -(IBAction) tapButton:(id)sender
 {
+    UIButton *button = (UIButton *) sender;
     if ([theOperand isEqualToString:@""] && [theFirstNumber isEqualToString:@""])
     {
-        if ( [sender isEqual:number1Button])
-            theFirstNumber = [theFirstNumber stringByAppendingString:@"1"];
-        
-        else if ( [ sender isEqual:number2Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"2"];
-        
-        else if ( [ sender isEqual:number3Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"3"];
-        
-        else if ( [ sender isEqual:number4Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"4"];
-        
-        else if ( [ sender isEqual:number5Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"5"];
-        
-        else if ( [ sender isEqual:number6Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"6"];
-        
-        else if ( [ sender isEqual:number7Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"7"];
-        
-        else if ( [ sender isEqual:number8Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"8"];
-        
-        else if ( [ sender isEqual:number9Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"9"];
-        
-        else if ( [ sender isEqual:number0Button])
-            theFirstNumber = [ theFirstNumber stringByAppendingString:@"0"];
-        
-        else if ([sender isEqual:pointButton])
+        theFirstNumber = [theFirstNumber stringByAppendingString:button.titleLabel.text];
+        if ([button.titleLabel.text isEqualToString:@"."])
         {
             if ([theFirstNumber rangeOfString:@"."].location == NSNotFound)
                 theFirstNumber = [theFirstNumber stringByAppendingString:@"."];
             else
                 return;
-        }
-        
+        }        
         resultLable.text = theFirstNumber;
     }
     else
     {
-        if ( [sender isEqual:number1Button])
-            theSecondNumber = [theSecondNumber stringByAppendingString:@"1"];
-        
-        else if ( [ sender isEqual:number2Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"2"];
-        
-        else if ( [ sender isEqual:number3Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"3"];
-        
-        else if ( [ sender isEqual:number4Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"4"];
-        
-        else if ( [ sender isEqual:number5Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"5"];
-        
-        else if ( [ sender isEqual:number6Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"6"];
-        
-        else if ( [ sender isEqual:number7Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"7"];
-        
-        else if ( [ sender isEqual:number8Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"8"];
-        
-        else if ( [ sender isEqual:number9Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"9"];
-        
-        else if ( [ sender isEqual:number0Button])
-            theSecondNumber = [ theSecondNumber stringByAppendingString:@"0"];
-        
-        else if ([sender isEqual:pointButton])
+        theSecondNumber = [theSecondNumber stringByAppendingString:button.titleLabel.text];
+        if ([button.titleLabel.text isEqualToString:@"."])
         {
             if ([theSecondNumber rangeOfString:@"."].location == NSNotFound)
                 theSecondNumber = [theSecondNumber stringByAppendingString:@"."];
             else
                 return;
         }
-        
         resultLable.text = theSecondNumber;
     }
 }
 
 -(IBAction)tapCalculateButton:(id)sender
 {
-    NSDecimalNumber *inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-    NSDecimalNumber *inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-    NSDecimalNumber *calculateResultNumber = [NSDecimalNumber decimalNumberWithString:@""];
     if ([sender isEqual:return_zeroButton])
     {
-        theFirstNumber = theSecondNumber = theOperand = @"";
+        theFirstNumber = theSecondNumber = theOperand = theTempResult = @"";
+        resultLable.text = theFirstNumber;
     }
     if (![theTempResult isEqualToString:@""])
     {
@@ -180,6 +113,9 @@
         }
         else
         {
+            NSDecimalNumber *inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
+            NSDecimalNumber *inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
+            NSDecimalNumber *calculateResultNumber = [NSDecimalNumber decimalNumberWithString:@""];
             if (![sender isEqual:equalButton])
             {
                 if ([theOperand isEqualToString:@"+"])
