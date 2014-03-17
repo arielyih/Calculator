@@ -9,365 +9,234 @@
 #import "MainViewController.h"
 
 
-@interface MainViewController ()
-
-
-@end
+//@interface MainViewController ()
+//
+//
+//@end
 
 @implementation MainViewController
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     resultLable.textAlignment = NSTextAlignmentRight;
-    resultLable.textColor = [UIColor blackColor];
-    [number1Button setTitle:@"1" forState:UIControlStateNormal];
-    [number2Button setTitle:@"2" forState:UIControlStateNormal];
-    [number3Button setTitle:@"3" forState:UIControlStateNormal];
-    [number4Button setTitle:@"4" forState:UIControlStateNormal];
-    [number5Button setTitle:@"5" forState:UIControlStateNormal];
-    [number6Button setTitle:@"6" forState:UIControlStateNormal];
-    [number7Button setTitle:@"7" forState:UIControlStateNormal];
-    [number8Button setTitle:@"8" forState:UIControlStateNormal];
-    [number9Button setTitle:@"9" forState:UIControlStateNormal];
-    [number0Button setTitle:@"0" forState:UIControlStateNormal];
-    [return_zeroButton setTitle:@"C" forState:UIControlStateNormal];
-    [plusButton setTitle:@"+" forState:UIControlStateNormal];
-    [minusButton setTitle:@"-" forState:UIControlStateNormal];
-    [mutiplyButton setTitle:@"x" forState:UIControlStateNormal];
-    [divideButton setTitle:@"/" forState:UIControlStateNormal];
-    [equalButton setTitle:@"=" forState:UIControlStateNormal];
-    [pointButton setTitle:@"." forState:UIControlStateNormal];
-    resultString = theFirstNumber = theSecondNumber = theOperand = theTempNumber = @"";
+    theFirstNumber = theSecondNumber = theOperand = theTempResult = @"";
 }
 
--(IBAction)tapButton:(id)sender
+-(IBAction) tapButton:(id)sender
 {
-    if ( [sender isEqual:number1Button])
-        resultString = [resultString stringByAppendingString:@"1"];
-    
-    else if ( [ sender isEqual:number2Button])
-        resultString = [ resultString stringByAppendingString:@"2"];
-    
-    else if ( [ sender isEqual:number3Button])
-        resultString = [ resultString stringByAppendingString:@"3"];
-    
-    else if ( [ sender isEqual:number4Button])
-        resultString = [ resultString stringByAppendingString:@"4"];
-    
-    else if ( [ sender isEqual:number5Button])
-        resultString = [ resultString stringByAppendingString:@"5"];
-    
-    else if ( [ sender isEqual:number6Button])
-        resultString = [ resultString stringByAppendingString:@"6"];
-    
-    else if ( [ sender isEqual:number7Button])
-        resultString = [ resultString stringByAppendingString:@"7"];
-    
-    else if ( [ sender isEqual:number8Button])
-        resultString = [ resultString stringByAppendingString:@"8"];
-    
-    else if ( [ sender isEqual:number9Button])
-        resultString = [ resultString stringByAppendingString:@"9"];
-    
-    else if ( [ sender isEqual:number0Button])
-        resultString = [ resultString stringByAppendingString:@"0"];
-    
-    else if ( [ sender isEqual:pointButton])
-        resultString = [ resultString stringByAppendingString:@"."];
-    
-    resultLable.text = resultString;
+    if ([theOperand isEqualToString:@""] && [theFirstNumber isEqualToString:@""])
+    {
+        if ( [sender isEqual:number1Button])
+            theFirstNumber = [theFirstNumber stringByAppendingString:@"1"];
+        
+        else if ( [ sender isEqual:number2Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"2"];
+        
+        else if ( [ sender isEqual:number3Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"3"];
+        
+        else if ( [ sender isEqual:number4Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"4"];
+        
+        else if ( [ sender isEqual:number5Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"5"];
+        
+        else if ( [ sender isEqual:number6Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"6"];
+        
+        else if ( [ sender isEqual:number7Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"7"];
+        
+        else if ( [ sender isEqual:number8Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"8"];
+        
+        else if ( [ sender isEqual:number9Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"9"];
+        
+        else if ( [ sender isEqual:number0Button])
+            theFirstNumber = [ theFirstNumber stringByAppendingString:@"0"];
+        
+        else if ([sender isEqual:pointButton])
+        {
+            if ([theFirstNumber rangeOfString:@"."].location == NSNotFound)
+                theFirstNumber = [theFirstNumber stringByAppendingString:@"."];
+            else
+                return;
+        }
+        
+        resultLable.text = theFirstNumber;
+    }
+    else
+    {
+        if ( [sender isEqual:number1Button])
+            theSecondNumber = [theSecondNumber stringByAppendingString:@"1"];
+        
+        else if ( [ sender isEqual:number2Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"2"];
+        
+        else if ( [ sender isEqual:number3Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"3"];
+        
+        else if ( [ sender isEqual:number4Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"4"];
+        
+        else if ( [ sender isEqual:number5Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"5"];
+        
+        else if ( [ sender isEqual:number6Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"6"];
+        
+        else if ( [ sender isEqual:number7Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"7"];
+        
+        else if ( [ sender isEqual:number8Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"8"];
+        
+        else if ( [ sender isEqual:number9Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"9"];
+        
+        else if ( [ sender isEqual:number0Button])
+            theSecondNumber = [ theSecondNumber stringByAppendingString:@"0"];
+        
+        else if ([sender isEqual:pointButton])
+        {
+            if ([theSecondNumber rangeOfString:@"."].location == NSNotFound)
+                theSecondNumber = [theSecondNumber stringByAppendingString:@"."];
+            else
+                return;
+        }
+        
+        resultLable.text = theSecondNumber;
+    }
 }
 
 -(IBAction)tapCalculateButton:(id)sender
 {
+    NSDecimalNumber *inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
+    NSDecimalNumber *inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
+    NSDecimalNumber *calculateResultNumber = [NSDecimalNumber decimalNumberWithString:@""];
     if ([sender isEqual:return_zeroButton])
     {
-        resultLable.text = @"";
-        resultString = theFirstNumber = theSecondNumber = theOperand = theTempNumber = @"";
+        theFirstNumber = theSecondNumber = theOperand = @"";
     }
-    
-    else if ([theFirstNumber isEqualToString:@""] && [theOperand isEqualToString:@""])
+    if (![theTempResult isEqualToString:@""])
     {
-        if ([theTempNumber isEqualToString:@""])
+        theFirstNumber = theTempResult;
+        theTempResult = @"";
+        if (![sender isEqual:equalButton])
         {
-            theFirstNumber = resultString;
-            theTempNumber = resultString;
-            resultString = @"";
             if ([sender isEqual:plusButton])
             {
                 theOperand = @"+";
-                resultLable.text = theTempNumber;
             }
             else if ([sender isEqual:minusButton])
             {
                 theOperand = @"-";
-                resultLable.text = theTempNumber;
             }
             else if ([sender isEqual:mutiplyButton])
             {
                 theOperand = @"x";
-                resultLable.text = theTempNumber;
             }
             else if ([sender isEqual:divideButton])
             {
                 theOperand = @"/";
-                resultLable.text = theTempNumber;
             }
+            resultLable.text = theFirstNumber;
         }
-        else if(![theTempNumber isEqualToString:@""])
+        else
         {
-            theFirstNumber = theTempNumber;
-            resultString = @"";
-            if ([sender isEqual:plusButton])
-            {
-                theOperand = @"+";
-                resultLable.text = theTempNumber;
-            }
-            else if ([sender isEqual:minusButton])
-            {
-                theOperand = @"-";
-                resultLable.text = theTempNumber;
-            }
-            else if ([sender isEqual:mutiplyButton])
-            {
-                theOperand = @"x";
-                resultLable.text = theTempNumber;
-            }
-            else if ([sender isEqual:divideButton])
-            {
-                theOperand = @"/";
-                resultLable.text = theTempNumber;
-            }
+            resultLable.text = theFirstNumber;
         }
-        
     }
-    
-    else if (![theFirstNumber isEqualToString:@""] && ![theOperand isEqualToString:@""])
+    else
     {
-        if (![resultString isEqualToString:@""])
+        if ([theSecondNumber isEqualToString:@""])
         {
-            theSecondNumber = resultString;
-            theTempNumber = theSecondNumber;
-            resultString = @"";
-            if ([sender isEqual:plusButton])
+            if (![sender isEqual:equalButton])
             {
-                if ([theOperand isEqualToString:@"+"])
+                if ([sender isEqual:plusButton])
                 {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
+                    theOperand = @"+";
                 }
-                else if([theOperand isEqualToString:@"-"])
+                else if ([sender isEqual:minusButton])
                 {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
+                    theOperand = @"-";
                 }
-                else if([theOperand isEqualToString:@"x"])
+                else if ([sender isEqual:mutiplyButton])
                 {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
+                    theOperand = @"x";
                 }
-                else if([theOperand isEqualToString:@"/"])
+                else if ([sender isEqual:divideButton])
                 {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
+                    theOperand = @"/";
                 }
-                theSecondNumber = resultString = @"";
-                theOperand = @"+";
-                resultLable.text = theTempNumber;
+                resultLable.text = theFirstNumber;
             }
-            else if ([sender isEqual:minusButton])
+            else
             {
-                if ([theOperand isEqualToString:@"+"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"-"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"x"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"/"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                theSecondNumber = resultString = @"";
-                theOperand = @"-";
-                resultLable.text = theTempNumber;
-            }
-            else if ([sender isEqual:mutiplyButton])
-            {
-                if ([theOperand isEqualToString:@"+"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"-"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"x"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"/"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                theSecondNumber = resultString = @"";
-                theOperand = @"x";
-                resultLable.text = theTempNumber;
-            }
-            else if ([sender isEqual:divideButton])
-            {
-                if ([theOperand isEqualToString:@"+"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"-"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"x"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"/"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                theSecondNumber = resultString = @"";
-                theOperand = @"/";
-                resultLable.text = theTempNumber;
-            }
-            else if ([sender isEqual:equalButton])
-            {
-                if ([theOperand isEqualToString:@"+"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"-"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"x"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                else if([theOperand isEqualToString:@"/"])
-                {
-                    inputFirstNumber = [NSDecimalNumber decimalNumberWithString:theFirstNumber];
-                    inputSecondNumber = [NSDecimalNumber decimalNumberWithString:theSecondNumber];
-                    tempNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
-                    theFirstNumber = tempNumber.stringValue;
-                    theTempNumber = theFirstNumber;
-                }
-                theSecondNumber = resultString = theOperand = theFirstNumber = @"";
-                resultLable.text = theTempNumber;
+                resultLable.text = theFirstNumber;
             }
         }
-        else if ([resultString isEqualToString:@""])
+        else
         {
-            if ([sender isEqual:plusButton])
+            if (![sender isEqual:equalButton])
             {
-                theOperand = @"+";
+                if ([theOperand isEqualToString:@"+"])
+                {
+                    calculateResultNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
+                }
+                else if ([theOperand isEqualToString:@"-"])
+                {
+                    calculateResultNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
+                }
+                else if ([theOperand isEqualToString:@"x"])
+                {
+                    calculateResultNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
+                }
+                else if ([theOperand isEqualToString:@"/"])
+                {
+                    if ([theSecondNumber isEqualToString:@"0"])
+                    {
+                        calculateResultNumber = nil;
+                    }
+                    else
+                        calculateResultNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
+                }
+                theFirstNumber = calculateResultNumber.stringValue;
+                resultLable.text = theFirstNumber;
+                theSecondNumber = @"";
+                UIButton *buttonSender = (UIButton *) sender;
+                theOperand = buttonSender.titleLabel.text;
             }
-            else if([sender isEqual:minusButton])
+            else
             {
-                theOperand = @"-";
+                if ([theOperand isEqualToString:@"+"])
+                {
+                    calculateResultNumber = [inputFirstNumber decimalNumberByAdding:inputSecondNumber];
+                }
+                else if ([theOperand isEqualToString:@"-"])
+                {
+                    calculateResultNumber = [inputFirstNumber decimalNumberBySubtracting:inputSecondNumber];
+                }
+                else if ([theOperand isEqualToString:@"x"])
+                {
+                    calculateResultNumber = [inputFirstNumber decimalNumberByMultiplyingBy:inputSecondNumber];
+                }
+                else if ([theOperand isEqualToString:@"/"])
+                {
+                    if ([theSecondNumber isEqualToString:@"0"])
+                    {
+                        calculateResultNumber = nil;
+                    }
+                    else
+                        calculateResultNumber = [inputFirstNumber decimalNumberByDividingBy:inputSecondNumber];
+                }
+                theTempResult = calculateResultNumber.stringValue;
+                resultLable.text = theTempResult;
+                theFirstNumber = theSecondNumber = theOperand = @"";
             }
-            else if([sender isEqual:mutiplyButton])
-            {
-                theOperand = @"x";
-            }
-            else if([sender isEqual:divideButton])
-            {
-                theOperand = @"/";
-            }
-            else if([sender isEqual:equalButton])
-            {
-                theOperand = @"";
-                theSecondNumber = resultString = theOperand = theFirstNumber = @"";
-            }
-            resultLable.text = theTempNumber;
         }
     }
 }
-
-
-
 @end

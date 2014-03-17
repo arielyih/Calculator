@@ -29,21 +29,13 @@
     IBOutlet UIButton *equalButton;
     IBOutlet UIButton *pointButton;
     
-    NSString *resultString;
     NSString *theFirstNumber;
     NSString *theSecondNumber;
-    NSString *theTempNumber;
     NSString *theOperand;
-    NSDecimalNumber *inputFirstNumber;
-    NSDecimalNumber *inputSecondNumber;
-    NSDecimalNumber *tempNumber;
-//    BOOL finishTheFirstNumber;   // 布林值   if (test == YES) 才會進入function
-//    BOOL finishTheOperand;
-//    BOOL finishTheSecondNumber;
+    NSString *theTempResult;
 }
 
--(IBAction)tapButton:(id)sender;
--(IBAction)tapCalculateButton:(id)sender;
-
+-(IBAction) tapButton:(id)sender;
+-(IBAction) tapCalculateButton:(id)sender;
 
 @end
