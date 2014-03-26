@@ -20,8 +20,12 @@
 -(IBAction) tapButton:(id)sender
 {
     UIButton *button = (UIButton *) sender;
-    if ([theOperand isEqualToString:@""] && [theFirstNumber isEqualToString:@""])
+    if ([theOperand isEqualToString:@""] && [theSecondNumber isEqualToString:@""])
     {
+        if (![theTempResult isEqualToString:@""])
+        {
+            theTempResult = @"";
+        }
         theFirstNumber = [theFirstNumber stringByAppendingString:button.titleLabel.text];
         if ([button.titleLabel.text isEqualToString:@"."])
         {
@@ -32,7 +36,7 @@
         }        
         resultLable.text = theFirstNumber;
     }
-    else
+    if (![theOperand isEqualToString:@""] && ![theFirstNumber isEqualToString:@""])
     {
         theSecondNumber = [theSecondNumber stringByAppendingString:button.titleLabel.text];
         if ([button.titleLabel.text isEqualToString:@"."])
@@ -55,10 +59,10 @@
     }
     if (![theTempResult isEqualToString:@""])
     {
-        theFirstNumber = theTempResult;
-        theTempResult = @"";
         if (![sender isEqual:equalButton])
         {
+            theFirstNumber = theTempResult;
+            theTempResult = @"";
             if ([sender isEqual:plusButton])
             {
                 theOperand = @"+";
