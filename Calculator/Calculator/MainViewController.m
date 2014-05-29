@@ -83,7 +83,7 @@
         }
         else
         {
-            resultLable.text = theFirstNumber;
+            resultLable.text = theTempResult;
         }
     }
     else
